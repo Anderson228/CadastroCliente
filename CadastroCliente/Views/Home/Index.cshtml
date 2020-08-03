@@ -1,0 +1,58 @@
+﻿@model CadastroCliente.ViewModel.ClienteListViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Lista dos Clientes</h2>
+
+<p>
+    <a asp-action="Create">Novo Cliente</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <b>Nome</b>
+            </th>
+            <th>
+                <b>TipoCliente</b>
+            </th>
+            <th>
+                <b>Documento</b>
+            </th>
+            <th>
+                <b>DataCadastro</b>
+            </th>
+            <th>
+                <b>Telefone</b>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Cliente) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Documento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataCadastro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefone)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ClienteId">Editar</a> |
+                <a asp-action="Delete" asp-route-id="@item.ClienteId">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

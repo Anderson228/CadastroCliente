@@ -1,0 +1,48 @@
+﻿@model CadastroCliente.Models.Cliente
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<h3>Deseja realmente Deletar este Cliente?</h3>
+<div>
+    <form asp-action="Delete" role="form">
+
+        <dl class="row">
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(@Model => @Model.Nome)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Nome)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(@Model => @Model.TipoCliente)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.TipoCliente)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(@Model => @Model.Documento)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(Model => Model.Documento)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(@model => @Model.DataCadastro)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.DataCadastro)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(@Model => @Model.Telefone)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Telefone)
+            </dd>            
+        </dl>
+    </form>
+    <hr />
+    <form asp-action="DeleteConfirmed" asp-route-id="@Model.ClienteId">
+        <input class="btn btn-danger"  type="submit" value="Deletar" /> |
+        <a asp-action="Index" class="btn btn-outline-info">Retornar</a>
+    </form>
+</div>

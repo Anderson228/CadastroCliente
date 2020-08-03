@@ -1,0 +1,83 @@
+﻿@model CadastroCliente.Models.Cliente
+
+@{
+    ViewData["Title"] = "Create";
+}
+<h3>Novo Cliente</h3>
+<hr />
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="@Model.Nome" class="control-label"></label>
+                <input asp-for="@Model.Nome" class="form-control" />
+                <span asp-validation-for="@Model.Nome" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@Model.TipoCliente" class="control-label"></label>
+                <textarea asp-for="@Model.TipoCliente" class="form-control"></textarea>
+                <span asp-validation-for="@Model.TipoCliente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Documento" class="control-label"></label>
+                <textarea asp-for="@Model.Documento" class="form-control"></textarea>
+                <span asp-validation-for="@Model.Documento" class="text-danger"></span>
+            </div>
+
+            <!-- <input type="radio" id="rbCpf" name="tipoPessoa" value="Sim" checked onClick="habilitaCampo(this.id)"> Pessoa Física </input>
+
+    <input type="radio" id="rbCnpj" name="tipoPessoa" value="Nao" onClick="habilitaCampo(this.id)"> Pessoa Jurídica </input>
+
+
+    <input type="text" id="txtCpf" value="Digite seu CPF"/>
+    <input type="text" id="txtCnpj" value="Digite seu CNPJ" />
+
+    -->
+
+            <div class="form-group">
+                <label asp-for="@Model.DataCadastro" class="control-label"></label>
+                <textarea asp-for="@Model.DataCadastro" class="form-control"></textarea>
+                <span asp-validation-for="@Model.DataCadastro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Telefone" class="control-label"></label>
+                <input asp-for="@Model.Telefone" class="form-control" />
+                <span asp-validation-for="@Model.Telefone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-outline-info">Retornar</a>
+            </div>
+        </form>
+            </div>
+        </div>
+    <script type="text/javascript">
+        function habilitaCampo(qual) {
+            document.getElementById("txtCpf").style.display = qual == "rbCpf" ? "block" : "none";
+            document.getElementById("txtCnpj").style.display = qual == "rbCnpj" ? "block" : "none";
+
+        }
+
+        $(document).ready(function () {
+            var $seuCampoCpf = $("#txtCpf");
+            $seuCampoCpf.mask('000.000.000-00', {reverse: true});
+        });
+
+        $(document).ready(function () {
+            var $seuCampoCpf = $("#txtCnpj");
+            $seuCampoCpf.mask('00.000.000/0000-00', { reverse: true });
+        });
+
+        $('input[name="tipoPessoa"]').change(function () {
+            if ($('input[name="tipoPessoa"]:checked').val() === "Pessoa Física") {
+                $('.camposExtras').show();
+            } else {
+                $('.camposExtras').hide();
+            }
+        });
+
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
